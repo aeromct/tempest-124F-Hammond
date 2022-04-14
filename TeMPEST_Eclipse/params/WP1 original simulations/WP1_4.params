@@ -1,0 +1,121 @@
+# Simple Test file
+#### SYSTEM PROPERTIES ####
+System_Mass	= 500 	# kg
+
+#### EPOCH PARAMETERS ####
+Ephemeris_Year	= 2000
+Ephemeris_Time	= 001/00:00:00
+Circular_Alt    = 600000
+Inclination	= 98.0
+RAAN		= 0.0	# also longitude of ascending node
+Arg_Perigee	= 0.0	# also agrument of periapsis
+Anomaly_Type	= True
+#True_Anomaly	= 0.0
+
+#### eccentricy #####
+# A = a(1+e)	e=A/a-1	A=apogee, a=semimajor axis
+# P = a(1-e)	e=P/a+1
+
+#APOGEE_ALT	= 	# Apogee  altitude above mean earth radius (m)        
+#PERIGEE_ALT	= 	# Perigee altitude above mean earth radius (m) 
+
+######### SSimulation Parameters #######
+Orbit_Perturb	= Yes 	# GENORBIT, include Sun, Moon, and Oblateness
+Orbit_Decay	= no
+Orbit_Precise   = Yes
+Ephem_From_RV	= Yes	# use postition and velocity to get ephemeri (orbital elements)
+
+######## NO libration (EMFgg = EMFlib) #####
+InPlane_Lib     =   0.00
+OutofPlane_Lib  =   0.00
+Radial_Lib      =   0.00
+IP_Phase	=   0.00
+OP_Phase	=   0.00
+Rad_Phase	=   0.00
+
+######## Simulation Start & Stop Time #####
+Start_Year	= 2000
+Start_Time	= 001/00:00:00.000
+Stop_Year	= 2000
+Stop_Time	= 091/00:00:00.000
+######## MET0 Time = Launch time #####
+MET0_Year	= 2000
+MET0_Time	= 001/00:00:00.00
+
+###################################################################
+# Increment by 10 seconds
+#
+Time_Incr	= 000/00:01:00.000
+SS_Output	= 10
+
+###################################################################
+# Set tether length to 'upward deployed'  (HARVEST MODE)
+# 1.3 km, Bare
+
+
+Tether_End      = 0.0
+Bare_Start	= 0.0
+Bare_End	= 0.0
+T_Resistivity	= 0.00000282   # ohms * cm (Aluminum)
+T_Cond_Radius	= 0.000225     # meters (25 AWG)
+
+Bare_Segments	= 100
+
+Bare_Load	= 0	# Ohms
+
+############# Upper Contactor ###################################
+# anode (collects electrons)
+
+Contactor_UP	= 2
+PM_R_SAT	= 1
+
+# Initial guess for Anode Bias
+Anode_Bias	= 400.0
+
+###################################################################
+# HCPC for lower body contactor
+# P1=Molecular weight of expellant (Xenon = 131.29)
+# P2=Gas flow rate in SCCM
+# P3=Double Layer Voltage Drop (e.g. 4.0V)
+# P4=Source Te (e.g 3.889)
+
+Contactor_Down  = 7
+Contactor_P1_Dn = 131.29
+Contactor_P2_Dn = 0.5
+Contactor_P3_Dn = 4.0
+Contactor_P4_Dn = 3.889
+
+# Initial Guess for Cathode Bias
+Cathode_Bias	= -400.0
+
+##################################################################
+###################################################################
+# List out outputs (NOT case sensitive)
+
+Show_Vars	= MET_DAYS
+#Show_Vars	= P_LOAD
+Show_Vars	= i_bare_end
+#---POSITION---
+Show_Vars	= Rx_ECI
+Show_Vars	= Ry_ECI
+Show_Vars	= Rz_ECI
+#---Velocity---
+Show_Vars	= Vx_ECI
+Show_Vars	= Vy_ECI
+Show_Vars	= Vz_ECI
+#---ORBITAL ---
+Show_Vars	= eccentricity
+Show_Vars	= inclination
+Show_Vars	= SEMI_MAJ_AXIS
+Show_Vars	= ARG_PERIGEE
+Show_Vars	= RAAN
+Show_Vars	= TRUE_ANOMALY
+#---ENVIRONMENTAL ---
+Show_Vars	= ELECT_DENSITY
+Show_Vars	= MASS_DENSITY
+Show_Vars	= O_DENSITY
+Show_Vars	= Bx_ECI
+Show_Vars	= By_ECI
+Show_Vars	= Bz_ECI
+#---TETHER VARIABLES---
+Show_Vars	= VxB_LVLH

@@ -1,0 +1,10 @@
+::::: From the PARAMS folder :::::
+tempest -f WP1a.params -o WP1a.txt
+
+::::: From home directory :::::
+cd tempest/params
+
+
+::::: To see which modules there are and access the documentation :::::
+tempest -help
+tempest -doc MODULEX

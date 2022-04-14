@@ -1,0 +1,13 @@
+I have some variales for temperature, but need to contact the author to see how to use them.
+
+Options in Tempest Simulation for the tether properties 
+ T_COND_RADIUS   = Radius of conductor in/of tether (m)                        
+ T_RESISTIVITY   = Resistivity of tether material (ohm-cm) at given temperature
+ T_RESIST_TEMP   = Temperature at which resisitivity is specified (deg C)      
+ T_RES_TEMPCO    = Temperature resistance coefficient of tether (per deg C)    
+ B_EMISSIVITY    = Infrared emissivity of bare tether segment                  
+ B_ABSORBTIVITY  = Solar absorbtivity of bare tether segment 
+
+Output Options
+ T_TEMPERATURE   = Tether temperature (deg C)
+ T_RESISTANCE    = Tether resistance (ohms)

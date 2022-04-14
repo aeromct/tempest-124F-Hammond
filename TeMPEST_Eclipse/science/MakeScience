@@ -1,0 +1,106 @@
+#!/bin/bash
+# Run this script to remake all the science libraries.
+# Comments by Jesse McTernan 2021
+#   The Science Makefile goes into each directory and runs the specific Makefile therein
+#   It removes any files called "test" or "verify"
+#   It then remakes "test" or "verify"; executes the file; writes the output to "STATUS"
+#   Clears the screen
+#   Uses "more" to display "STATUS" file
+# The directory "Include" has a copy of some of the .h files, which are needed when compiling TeMPEST
+# This is a bad idea because you need to make sure any changes to the .h files are made both places
+
+set ARCH=`arch`
+echo "Architecture: $ARCH"
+rm obj/$ARCH/*.o
+rm lib/$ARCH/*.a
+
+
+echo " "
+echo "Starting STRSP"
+cd strsp
+make
+rm test verify *\~ \#*\#
+make verify
+verify > ../STATUS
+# test.c compiles to a program that prints "Agadoo doo doo!"
+# I can only guess it tests the handling of the string space using some abscure 1980s song...
+# I don't "test" is required, but if you are curious... uncomment the following
+#make test
+#test
+
+
+echo " "
+echo "Starting Math"
+cd ../math
+make
+rm test verify *\~ \#*\#
+make verify
+verify >> ../STATUS
+# I don't know what "test" does here. The output is an array of numbers
+# Again, "test" is probably not needed for TeMPEST as long as verify works
+
+
+echo " "
+echo "Starting Attitude"
+cd ../attitude
+make
+rm test verify *\~ \#*\#
+make verify
+verify >> ../STATUS
+# I don't know what "test" does here. The output is two lines of numbers
+# Again, "test" is probably not needed for TeMPEST as long as verify works
+
+
+echo " "
+echo "Starting Earth"
+cd ../earth
+make
+rm test verify *\~ \#*\#
+make verify
+verify >> ../STATUS
+# I don't know what "test" does here. The output is one line of 6 numbers
+# Again, "test" is probably not needed for TeMPEST as long as verify works
+
+
+echo " "
+echo "Starting Orbit"
+cd ../orbit
+make
+rm test verify *\~ \#*\#
+make verify
+verify >> ../STATUS
+# Again, "test" is probably not needed for TeMPEST as long as verify works
+
+
+echo " "
+echo "Starting Solid"
+cd ../solid
+make
+rm test verify *\~ \#*\#
+make verify
+verify >> ../STATUS
+# Again, "test" is probably not needed for TeMPEST as long as verify works
+
+
+echo " "
+echo "Starting Beam"
+cd ../beam
+make
+rm test verify *\~ \#*\#
+#### BEAM does not have verify.c #####
+
+
+echo " "
+echo "Starting reader"
+cd ../reader
+make
+rm test verify *\~ \#*\#
+#### READER DOES NOT HAVE VERIFY.C #######
+
+
+cd ..
+
+clear
+more STATUS
+rm STATUS
+
